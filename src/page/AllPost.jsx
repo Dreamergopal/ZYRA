@@ -28,22 +28,22 @@ function AllPost() {
   if (loading) return <Loading />;
   if (post.length === 0)
     return (
-      <p className="text-center text-green-400 py-6 font-[Poppins]">
+      <p className="text-center bg-black min-h-screen text-green-400 py-6 font-[Poppins]">
         No post found
       </p>
     );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black px-4 py-10 font-[Poppins] text-green-300">
-      <div className="w-[80%] mx-auto">
-        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black px-4 sm:px-6 py-10 font-[Poppins] text-green-300">
+      <div className="w-full max-w-screen-xl mx-auto">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {post.map((eachPost, index) => (
             <motion.div
               key={eachPost.$id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-zinc-900 border w-full border-green-800/30 rounded-2xl p-5 shadow-xl shadow-lime-400/10 hover:shadow-lime-400/20 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01]"
+              className="bg-zinc-900 border border-green-800/30 rounded-2xl p-5 shadow-xl shadow-lime-400/10 hover:shadow-lime-400/20 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01]"
             >
               {/* Author + Timestamp */}
               <div className="flex items-center justify-between mb-3">
@@ -62,20 +62,20 @@ function AllPost() {
 
               {/* Title + Content */}
               <Link to={`/post/${eachPost.$id}`}>
-                <h3 className="text-xl font-bold text-green-300 hover:text-lime-400 transition duration-200 line-clamp-1">
-                  <span className="mr-2 text-green-500">Title:</span>
-                  {eachPost.title.slice(0, 15) + " ..."}
+                <h3 className="text-lg sm:text-xl font-bold text-green-300 hover:text-lime-400 transition duration-200 line-clamp-1">
+                  <span className="mr-1 text-green-500">Title:</span>
+                  {eachPost.title.slice(0, 20) + " ..."}
                 </h3>
                 <p className="text-green-500 text-sm mt-2 line-clamp-3">
-                  {eachPost.content.slice(0,99) + ` ...`}
+                  {eachPost.content.slice(0, 99) + ` ...`}
                 </p>
               </Link>
 
               {/* View Button */}
-              <div className="flex justify-around mt-5">
+              <div className="flex justify-end mt-5">
                 <Link
                   to={`/post/${eachPost.$id}`}
-                  className="text-lime-400 font-semibold hover:text-black hover:bg-lime-400 py-1 px-3 rounded transition"
+                  className="text-lime-400 font-semibold hover:text-black hover:bg-lime-400 py-1 px-4 rounded transition text-sm"
                 >
                   View
                 </Link>
