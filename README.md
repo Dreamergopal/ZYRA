@@ -121,13 +121,13 @@ Pull requests are welcome! Feel free to open issues or suggestions.
 🧑‍💻 Author
 Gopal Kumar Burman
 
-🔗 LinkedIn
+<p align="left"> 
+  <a href="https://www.linkedin.com/in/gopal-kumar-burman-824aa4277" target="_blank"> <img src="https://img.shields.io/badge/LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /> </a>
 
-🐦 Twitter
-
-📸 Instagram
-
-💻 GitHub
+  <a href="https://x.com/dreamergopal" target="_blank"> <img src="https://img.shields.io/badge/X(Twitter)-000000?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /> </a>
+  
+  <a href="https://www.instagram.com/dreamergopal" target="_blank"> <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /> </a>
+</p>
 
 📝 License
 This project is open-source and free to use for educational or personal purposes.
