@@ -15,6 +15,7 @@ import Contact from "./page/Contact";
 import About from "./page/About";
 import Privacy from "./page/Privacy";
 import Terms from "./page/Terms";
+import { Analytics } from "@vercel/analytics/react"; 
 
 function App() {
   const router = createBrowserRouter([
@@ -74,6 +75,7 @@ function App() {
     <Provider store={Store}>
       <FetchLogin>
         <RouterProvider router={router} />
+        <Analytics />
       </FetchLogin>
     </Provider>
   );
