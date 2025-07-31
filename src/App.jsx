@@ -15,7 +15,8 @@ import Contact from "./page/Contact";
 import About from "./page/About";
 import Privacy from "./page/Privacy";
 import Terms from "./page/Terms";
-import { Analytics } from "@vercel/analytics/react"; 
+import { Analytics } from "@vercel/analytics/react";
+import ProtectedRoute from "./outlet/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,36 +38,52 @@ function App() {
         },
         {
           path: "/post",
-          element: <AddPost />,
+          element: (
+            <ProtectedRoute>
+              <AddPost />
+            </ProtectedRoute>
+          ),
         },
         {
           path: `/post/:slug`,
-          element: <PostDetail />,
+          element: (
+            <ProtectedRoute>
+              <PostDetail />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/edit-post/:slug",
-          element: <EditPost />,
+          element: (
+            <ProtectedRoute>
+              <EditPost />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/all-post",
-          element: <AllPost />,
+          element: (
+            <ProtectedRoute>
+              <AllPost />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/contact",
-          element: <Contact />
+          element: <Contact />,
         },
         {
           path: "/about",
-          element: <About />
+          element: <About />,
         },
         {
           path: "/privacy",
-          element: <Privacy />
+          element: <Privacy />,
         },
         {
           path: "terms",
-          element: <Terms />
-        }
+          element: <Terms />,
+        },
       ],
     },
   ]);

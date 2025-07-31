@@ -62,13 +62,32 @@ function AllPost() {
 
               {/* Title + Content */}
               <Link to={`/post/${eachPost.$id}`}>
-                <h3 className="text-lg sm:text-xl font-bold text-green-300 hover:text-lime-400 transition duration-200 line-clamp-1">
-                  <span className="mr-1 text-green-500">Title:</span>
-                  {eachPost.title.slice(0, 20) + " ..."}
-                </h3>
-                <p className="text-green-500 text-sm mt-2 line-clamp-3">
-                  {eachPost.content.slice(0, 99) + ` ...`}
-                </p>
+                {eachPost.image ? (
+                  <div>
+                    <img
+                      src={eachPost.image}
+                      alt={eachPost.title}
+                      className="w-full h-20 object-cover"
+                    />
+                    <h3 className="text-lg sm:text-xl font-bold text-green-300 hover:text-lime-400 transition duration-200 line-clamp-1">
+                      <span className="mr-1 text-green-500">Title:</span>
+                      {eachPost.title.slice(0, 20) + " ..."}
+                    </h3>
+                    <p className="text-green-500 text-sm mt-2 line-clamp-3">
+                      {eachPost.content.slice(0, 99) + ` ...`}
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-green-300 hover:text-lime-400 transition duration-200 line-clamp-1">
+                      <span className="mr-1 text-green-500">Title:</span>
+                      {eachPost.title.slice(0, 20) + " ..."}
+                    </h3>
+                    <p className="text-green-500 text-sm mt-2 line-clamp-3">
+                      {eachPost.content.slice(0, 99) + ` ...`}
+                    </p>
+                  </div>
+                )}
               </Link>
 
               {/* View Button */}

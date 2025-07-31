@@ -42,20 +42,32 @@ function PostDetail() {
   }
 
   return (
-    <div className="max-h-fit bg-gradient-to-br from-black via-zinc-900 to-black px-4 py-10 font-[Poppins] flex justify-center">
+    <div className="min-h- bg-gradient-to-br from-black via-zinc-900 to-black px-4 py-10 font-[Poppins] flex justify-center">
       <div className="w-full max-w-md bg-zinc-900 border border-green-800/40 rounded-2xl shadow-xl shadow-lime-400/10 p-6 md:p-10 text-green-300">
+        {/* file preview */}
+        <div className="mb-6">
+          <a href={post.image} download onClick={(e) => e.stopPropagation()}>
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-auto object-cover rounded-xl border border-lime-500/40 shadow-lg shadow-lime-500/10 transition-transform duration-300 hover:scale-105"
+            />
+          </a>
+        </div>
+
         {/* Title */}
         <div className="mb-6">
-          <h2 className="text-sm text-lime-400 mb-1">Title {" : "}
-          <span className="text-2xl font-extrabold text-green-400 tracking-wide break-words">
-            {post.title}
-          </span>
+          <h2 className="text-sm text-lime-400 mb-1">
+            Title {" : "}
+            <span className="text-2xl font-extrabold text-green-400 tracking-wide break-words">
+              {post.title}
+            </span>
           </h2>
         </div>
 
         {/* Content */}
         <div className="mb-8">
-          <h2 className="text-sm text-lime-400 mb-1">Content : {" "}</h2>
+          <h2 className="text-sm text-lime-400 mb-1">Content : </h2>
           <p className="whitespace-pre-line text-green-400 text-sm leading-relaxed break-words">
             {post.content}
           </p>
@@ -64,7 +76,8 @@ function PostDetail() {
         {/* Meta */}
         <div className="flex flex-col sm:flex-row sm:justify-between gap-2 border-t border-green-700 pt-4 text-green-600 text-sm">
           <span>
-            <strong className="text-lime-300">Author : {" "}</strong> {post?.author.toUpperCase()}
+            <strong className="text-lime-300">Author : </strong>{" "}
+            {post?.author.toUpperCase()}
           </span>
           <span>
             <strong className="text-lime-300">Views:</strong> {post?.views}

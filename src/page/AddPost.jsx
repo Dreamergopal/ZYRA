@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 
 function AddPost() {
   const [error, setError] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [preview, setPreview] = useState(null);
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const user = useSelector((state) => state.auth.userData);
@@ -27,18 +29,33 @@ function AddPost() {
 
     try {
       const slug = generateSlug(data.title);
+      let imgUrl = "";
+
+      if (imageFile) {
+        const uploadFile = await SERVICE.uploadImage(imageFile);
+        imgUrl = SERVICE.getFileURL(uploadFile.$id) || "";
+      }
+
       await SERVICE.createPost({
+        slug,
         title: data.title,
         content: data.content,
-        slug,
         userId: user.$id,
         is_published: true,
         author: user.name,
+        image: imgUrl,
       });
       navigate("/all-post");
     } catch (error) {
       console.log("addpost" + error.message);
       setError("Post creation failed");
+    }
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setPreview(URL.createObjectURL(file));
     }
   };
 
@@ -138,6 +155,25 @@ function AddPost() {
                 placeholder="Show your chronicle to the world..."
                 {...register("content", { required: true })}
               ></textarea>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-green-500">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                className="block w-full text-sm text-green-400 bg-black border border-green-800/40 rounded-lg cursor-pointer focus:outline-none"
+                required
+                onChange={(e) => handleImageChange(e)}
+              />
+              {preview && (
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="mt-4 max-h-60 rounded-xl border border-green-700 shadow shadow-lime-400/20"
+                />
+              )}
             </div>
 
             <div className="flex flex-col sm:flex-row items-start justify-between mt-6 gap-4">
