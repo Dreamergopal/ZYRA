@@ -53,10 +53,13 @@ function AddPost() {
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setPreview(URL.createObjectURL(file));
+    if (!file) {
+      alert("No file selected. Please pick a photo or take one.");
+      return;
     }
+    e.target.value = null;
+    setImageFile(file);
+    setPreview(URL.createObjectURL(file));
   };
 
   return (
@@ -163,6 +166,7 @@ function AddPost() {
               <input
                 type="file"
                 accept="image/*"
+                capture="environment"
                 className="block w-full text-sm text-green-400 bg-black border border-green-800/40 rounded-lg cursor-pointer focus:outline-none"
                 required
                 onChange={(e) => handleImageChange(e)}
@@ -171,6 +175,7 @@ function AddPost() {
                 <img
                   src={preview}
                   alt="Preview"
+                  onError={setPreview(null)}
                   className="mt-4 max-h-60 rounded-xl border border-green-700 shadow shadow-lime-400/20"
                 />
               )}
