@@ -43,7 +43,7 @@ function AddPost() {
         userId: user.$id,
         is_published: true,
         author: user.name,
-        image: imgUrl,
+        ...(imgUrl && { image: imgUrl }),
       });
       navigate("/all-post");
     } catch (error) {
