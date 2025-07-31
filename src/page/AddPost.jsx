@@ -168,7 +168,6 @@ function AddPost() {
                 type="file"
                 accept="image/*"
                 className="block w-full text-sm text-green-400 bg-black border border-green-800/40 rounded-lg cursor-pointer focus:outline-none"
-                required
                 onChange={(e) => handleImageChange(e)}
               />
               {preview && (
